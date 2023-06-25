@@ -1,4 +1,4 @@
-# ProjectoIPH
+# API Consumer com Ionic
 
 Trabalho de Computação Movel
 
