@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar class="ios hydrated"  color="" >
+    
+
+      <ion-button  fill="outline" [routerLink]="['/tabs/tab2/registar-curso']" style="margin: 10px;"  >
+        <ion-icon slot="icon-only"  name="add-outline"></ion-icon>
+      </ion-button>
+      <ion-title class="ios title-ios hydrated" style="text-align: center;" size="large">Todos os cursos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-text-center">
+  <ion-header>
+    <ion-toolbar class="ios hydrated">
+      
+      <!--
+        Pesquisar curso
+         <input type="search" placeholder="Pesquisar" class="form-control" style="width: 80%; margin: 12px auto;" >
+      -->
+      <ion-searchbar   style="border: 1px solid #fff; border-radius: 10px; margin: 12px;" 
+                  [(ngModel)]="term" placeholder="Pesquisar curso"  fill="outline"   ></ion-searchbar>
+     
+    
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list class="ios list-ios hydrated" >
+
+    <ion-item *ngFor="let item of curso | filtrarCurso : term " class="item-label item ios in-list ion-list" >
+
+      <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
+        
+        <iframe style=" border-top-left-radius: 10px; border-top-right-radius: 10px;"
+         width="100%" height="300" [src]="sanitizer.bypassSecurityTrustResourceUrl(item.link)"
+         title="YouTube video player" frameborder="0" 
+         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+
+        <ion-text class="ion-card-text">
+            <h4 class="ion-card-title">{{ item.nome }} </h4><br>
+            <h6>{{ item.descricao }}</h6>
+        </ion-text>
+
+          <!--
+          Editar curso
+          -->
+          <div class="ion-card-body" style="margin-top: 3px;  margin-bottom: 8px; " >
+          <ion-button [routerLink]="['/tabs/tab2/editar-curso',item.codigo]" color="primary">
+            <ion-label>Editar</ion-label>
+          </ion-button>
+
+            <!--
+            Eliminar curso
+          -->
+          <ion-button color="danger" class="eliminar" (click)="deletarCurso(item.codigo)">
+            <ion-label>Eliminar</ion-label>
+          </ion-button><br>
+        </div>
+
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+<router-outlet></router-outlet>

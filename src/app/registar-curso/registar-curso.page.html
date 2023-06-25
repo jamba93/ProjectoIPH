@@ -1,0 +1,77 @@
+
+<ion-header>
+  <ion-toolbar class="ios hydrated">
+    <ion-title class="ios title-ios hydrated">Adicionar curso</ion-title>
+    <ion-buttons slot="primary">
+      <ion-back-button text="Voltar" icon="" color="tertiary" fill="outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"  style="margin: 50%; ">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title size="large" class="ion-text-center">Novo curso</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+    <ion-list class="ion-text-center">
+          <ion-item>
+            <ion-input [(ngModel)]="curso.nome" label-placement="floating" fill="outline" type="text" label="Nome" required ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-textarea [(ngModel)]="curso.descricao" label-placement="floating" fill="outline" type="text" label="Descrição" required ></ion-textarea>
+          </ion-item>
+
+          <ion-item>
+            <ion-input [(ngModel)]="curso.link" label-placement="floating" fill="outline" type="text" label="Link"  required ></ion-input>
+          </ion-item>
+
+          <ion-item class="ion-text-center">
+            <ion-button  (click)="salvarCursos()" position="floating" style="width: 100px; height: 35px; margin-top: 20px;
+             margin-bottom: 20px; margin-left: 38%; ">Guardar</ion-button>
+          </ion-item>
+    </ion-list>
+
+  <ion-footer class="card-footer" *ngIf="showAlert">
+      <div class="alert alert-success" role="alert">
+          <button class="close" (click) = "fecharAlerta()" >&times;</button>
+          <ion-label  style="height: 11px;">Salvo com sucesso</ion-label>
+      </div>
+  </ion-footer>
+
+</ion-content>
+
+
+<!--<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-button>Default</ion-button>
+      <ion-button fill="clear">Clear</ion-button>
+      <ion-button fill="outline">Outline</ion-button>
+      <ion-button fill="solid">Solid</ion-button>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<p class="card-text">
+            <iframe width="200" height="315" [src]="sanitizer.bypassSecurityTrustResourceUrl(curso.link)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <br>{{ curso.descricao }}
+          </p>
+-->
+
+<!--
+  <div class="wrapper">
+    <div class="ion-activatable ripple-parent rounded-rectangle">
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="card">
+        <div class="card-body" style="width: 60%; margin: 10px auto ;" >
+          <div class="form-group">
+          </div>
+        </div>
+    </div>
+</div>
+-->
